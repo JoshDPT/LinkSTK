@@ -4,7 +4,7 @@ import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
 type Props = {
 	title: string;
 	href: string;
-	image?: string | StaticImport;
+	image?: string | any;
 };
 
 export default function LinkCard(props: Props) {
