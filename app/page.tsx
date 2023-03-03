@@ -15,8 +15,8 @@ export default function Home() {
 					className="rounded-full outline outline-gray-100 dark:outline-sky-500 dark:border-slate-200 shadow-[30px_35px_60px_-15px_rgba(0,255,255,.5)] dark:shadow-[-30px_35px_60px_-15px_rgba(153,0,205,.5)]  transition-all duration-500 ease-out"
 					src={profile}
 					alt="profile picture"
-					height={120}
-					width={120}
+					height={128}
+					width={128}
 					priority
 				/>
 			</span>
