@@ -10,9 +10,15 @@ export default function Home() {
 			<div className="absolute right-4 top-4 h-8 w-8 ">
 				<DarkModeButton />
 			</div>
-			<span className="rounded-full shadow-[-30px_35px_60px_-15px_rgba(153,0,205,.5)] dark:shadow-[30px_35px_60px_-15px_rgba(0,255,255,.5)] transition-all duration-500 ease-out">
+			<span className="rounded-full 
+				shadow-[-30px_35px_60px_-15px_rgba(153,0,205,.5)] 
+				dark:shadow-[-30px_35px_60px_-15px_rgba(0,255,255,.5)] 
+				transition-all duration-500 ease-out">
 				<Image
-					className="rounded-full outline outline-gray-100 dark:outline-sky-500 dark:border-slate-200 shadow-[30px_35px_60px_-15px_rgba(0,255,255,.5)] dark:shadow-[-30px_35px_60px_-15px_rgba(153,0,205,.5)]  transition-all duration-500 ease-out"
+					className="rounded-full outline outline-gray-100 dark:outline-sky-500 dark:border-slate-200 
+						shadow-[30px_35px_60px_-15px_rgba(0,255,255,.5)] 
+						dark:shadow-[30px_35px_60px_-15px_rgba(153,0,205,.5)]
+						transition-all duration-500 ease-out"
 					src={profile}
 					alt="profile picture"
 					height={128}
