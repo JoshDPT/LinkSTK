@@ -1,10 +1,6 @@
 import data from 'data.json';
 
-type Props = {
-	title: string;
-	href: string;
-	image?: string | any;
-};
+type Props = { href: string };
 
 function FakeCard(props: Props) {
 	return (
