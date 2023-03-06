@@ -27,7 +27,7 @@ export default function DarkModeButton () {
           />
       ) : (
         <MoonIcon
-          className="h-8 w-8 cursor-pointer text-gray-900"
+          className="h-8 w-8 cursor-pointer text-violet-500"
           onClick={()=> setTheme('dark')}
         />
       )}
