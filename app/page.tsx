@@ -3,6 +3,7 @@ import Image from 'next/image';
 import data from 'data.json';
 import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
+import Realistic from '@/components/Confetti';
 
 export default function Home() {
 	return (
