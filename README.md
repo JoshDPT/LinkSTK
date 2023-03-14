@@ -15,14 +15,14 @@ _an open-source link tree for developers_
 
 
 * Animated navigation bar
-* Collect emails 
-* Collect phone numbers
-* Code lock- protect link with a secret code
-* High-priority link animated styling
-* Sell PDFs by putting a payment lock on the link
-* Custom logo/signature
-* Individual link analytics
+* Collection - emails / phone numbers
+* Code lock - protect link with a secret code
+* High-priority link - animated styling
+* Link payment lock - sell PDFs by putting a lock on the link
+* Custom footer - logo/signature
+* Individual link analytics - mainly clicks
 * SEO Optimization
+* Home page views - with google analytics
 
 **_<span style="text-decoration:underline;">Stack</span>_**
 
