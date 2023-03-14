@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<div className="flex items-center flex-col mx-auto w-full px-8 justify-center mt-16">
 			{/* Dark mode button - top right */}
-			<div className="absolute right-4 top-4 h-8 w-8 ">
+			<div className="fixed right-8 top-8 h-8 w-8 ">
 				<DarkModeButton />
 			</div>
 
@@ -41,8 +41,6 @@ export default function Home() {
 				</h1>
 				<CheckBadgeIcon className="static w-5 h-5 text-sky-500 dark:text-sky-400 m-1 -mr-6 font-bold select-none transition-all duration-300 ease-out" />
 			</div>
-
-
 
 			{/* Link cards */}
 			{data.links.map((link) => (
