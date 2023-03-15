@@ -45,7 +45,7 @@ export default function Header({ data, profile }: HeaderProps) {
 				</h3>
 				<CheckBadgeIcon className="flex w-5 h-5 text-sky-500 dark:text-sky-400 font-bold select-none" />
 			</div>
-			<DarkModeButton/>
+			<DarkModeButton />
 		</div>
 	);
 }
