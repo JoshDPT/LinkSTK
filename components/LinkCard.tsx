@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
+import { CiExport } from 'react-icons/ci'
 
 type Props = {
 	title: string;
@@ -30,7 +31,8 @@ export default function LinkCard(props: Props) {
 			</div>
 
 			<div>
-				<ArrowUpOnSquareIcon className="h-12 w-12 m-4 text-slate-500 invisible group-hover:visible" />
+				<CiExport className="h-12 w-12 m-4 text-slate-500 invisible group-hover:visible" />
+				{/* <ArrowUpOnSquareIcon className="h-12 w-12 m-4 text-slate-500 invisible group-hover:visible" /> */}
 			</div>
 		</a>
 	);

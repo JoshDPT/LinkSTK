@@ -5,6 +5,7 @@ import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
 import Views from '@/components/Views';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
+import SocialBar from '@/components/SocialBar';
 
 export default function Home() {
 	return (
@@ -41,6 +42,8 @@ export default function Home() {
 				</h1>
 				<CheckBadgeIcon className="static w-5 h-5 text-sky-500 dark:text-sky-400 m-1 -mr-6 font-bold select-none transition-all duration-300 ease-out" />
 			</div>
+
+			<SocialBar />
 
 			{/* Link cards */}
 			{data.links.map((link) => (
