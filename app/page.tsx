@@ -6,27 +6,14 @@ import DarkModeButton from '@/components/DarkModeButton';
 import Views from '@/components/Views';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
+import Header from '@/components/Header';
 
 export default function Home() {
+
 	return (
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
-			<div className="fixed left-1/2 -translate-x-1/2 top-3 h-16 content-center w-full max-w-3xl z-10 bg-white/30 backdrop-blur-md ring-1 ring-gray-400/30 rounded-full flex flex-row px-3 justify-between items-center">
-				<Image
-					className="rounded-full"
-					src={profile}
-					alt="profile picture"
-					height={44}
-					width={44}
-					priority
-				/>
-				<div className="flex flex-row content-center items-center">
-					<h3 className="flex text-lg text-black dark:text-white font-bold select-none transition-all duration-300 ease-out">
-						{data.name}
-					</h3>
-					<CheckBadgeIcon className="flex w-5 h-5 text-sky-500 dark:text-sky-400 font-bold select-none transition-all duration-300 ease-out" />
-				</div>
-				<DarkModeButton />
-			</div>
+			
+			<Header data={data} profile={profile} />
 
 			{/* Profile picture with two animated shadows */}
 			<span
