@@ -2,13 +2,14 @@ import Image from 'next/image';
 import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
 import { CiExport } from 'react-icons/ci'
 
-type Props = {
+type LinkProps = {
 	title: string;
 	href: string;
 	image?: string | any;
+	clicks: string;
 };
 
-export default function LinkCard(props: Props) {
+export default function LinkCard(props: LinkProps) {
 	return (
 		<a
 			className="group flex items-center p-1 rounded-full w-full max-w-2xl bg-slate-200 dark:bg-slate-800 hover:scale-105 transition-all border border-slate-500 mb-4 h-16 shadow-m hover:shadow-2xl hover:bg-white dark:hover:bg-slate-700 duration-200 ease-out"

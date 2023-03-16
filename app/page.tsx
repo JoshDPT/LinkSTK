@@ -9,6 +9,15 @@ import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
 
 export default function Home() {
+	const socials = new Set([
+		'facebook',
+		'github',
+		'instagram',
+		'linkedin',
+		'twitter',
+		'youtube',
+	]);
+
 	return (
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
 			{/* Header */}
@@ -45,16 +54,19 @@ export default function Home() {
 			<SocialBar />
 
 			{/* Link cards */}
-			{data.links.map((link) => (
-				<LinkCard key={link.href} {...link} />
-			))}
+			{data.links
+				.filter((e) => !socials.has(e.title))
+				.map((link) => (
+					<LinkCard key={link.href} {...link} />
+				))}
 
 			{/* Page views */}
 			<Views />
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">
-				Created by <span className='text-sky-500 dark:text-sky-400'>{data.name}</span>
+				Created by{' '}
+				<span className="text-sky-500 dark:text-sky-400">{data.name}</span>
 			</h3>
 		</div>
 	);

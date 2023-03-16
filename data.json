@@ -2,15 +2,18 @@
   "name": "Joshuah Edwards",
   "links": [
     {
-      "title": "LinkedIn",
-      "href": "http://linkedin.com/in/joshuah-edwards",
-      "image": "https://source.unsplash.com/7JX0-bfiuxQ",
+      "title": "linkedin",
+      "href": "https://linkedin.com/in/joshuah-edwards",
       "clicks": "100"
     },
     {
-      "title": "Github",
-      "href": "http://github.com/JoshDPT",
-      "image": "https://source.unsplash.com/Kj2SaNHG-hg",
+      "title": "github",
+      "href": "https://github.com/JoshDPT",
+      "clicks": "100"
+    },
+    {
+      "title": "twitter",
+      "href": "https://twitter.com/Joshuah_Edwards",
       "clicks": "100"
     },
     {
@@ -20,15 +23,27 @@
       "clicks": "100"
     },
     {
-      "title": "Portfolio",
-      "href": "https://os-poseidon.vercel.app/",
+      "title": "LinkSTK",
+      "href": "https://github.com/JoshDPT/LinkSTK",
+      "image": "https://source.unsplash.com/FewHpO4VC9Y",
+      "clicks": "100"
+    },
+    {
+      "title": "ValPals",
+      "href": "https://github.com/CTRI-13-Jigglypuff/ValPals",
       "image": "https://source.unsplash.com/voM1Z9cGPCU",
       "clicks": "100"
     },
     {
-      "title": "Link 5",
-      "href": "https://os-poseidon.vercel.app/",
-      "image": "https://source.unsplash.com/FewHpO4VC9Y",
+      "title": "Link1",
+      "href": "https://github.com/JoshDPT/LinkSTK",
+      "image": "https://source.unsplash.com/Kj2SaNHG-hg",
+      "clicks": "100"
+    },
+    {
+      "title": "Link2",
+      "href": "https://github.com/JoshDPT/LinkSTK",
+      "image": "https://source.unsplash.com/7JX0-bfiuxQ",
       "clicks": "100"
     }
   ]
