@@ -2,7 +2,6 @@
 
 import Image, { StaticImageData } from 'next/image';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
-import DarkModeButton from './DarkModeButton';
 import { useState, useEffect } from 'react';
 
 export default function Header({ data, profile }: HeaderProps) {

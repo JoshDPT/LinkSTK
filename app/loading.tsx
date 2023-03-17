@@ -1,5 +1,3 @@
-import data from 'data.json';
-
 type Props = { href: string };
 
 function FakeCard(props: Props) {
@@ -36,10 +34,6 @@ export default function Fake() {
 			<h1 className="animate-pulse mx-auto my-8 text-2xl font-bold select-none text-slate-200">
 				Loading...
 			</h1>
-
-			{data.links.map((link) => (
-				<FakeCard key={link.href} {...link} />
-			))}
 		</div>
 	);
 }
