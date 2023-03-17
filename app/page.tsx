@@ -8,6 +8,7 @@ import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
 import { PrismaClient } from '@prisma/client';
+import Footer from '@/components/Footer';
 
 const prisma = new PrismaClient();
 
@@ -24,7 +25,7 @@ export default async function Home() {
 	]);
 
 	return (
-		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
+		<main className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
 			{/* Header */}
 			<Header data={data} profile={profile} />
 
@@ -62,23 +63,23 @@ export default async function Home() {
 				<CheckBadgeIcon className="static w-5 h-5 text-sky-500 dark:text-sky-400 m-1 -mr-6 font-bold select-none transition-all duration-300 ease-out" />
 			</div>
 
+			{/* Social Logo Links */}
 			<SocialBar links={links} />
 
 			{/* Link cards */}
-			{links
-				.filter((e) => !socials.has(e.title))
-				.map((link) => (
-					<LinkCard key={link.href} {...link} />
-				))}
+			<section className="w-full">
+				{links
+					.filter((e) => !socials.has(e.title))
+					.map((link) => (
+						<LinkCard key={link.href} {...link} />
+						))}
+			</section>
 
 			{/* Page views */}
 			<Views />
 
 			{/* Created by */}
-			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">
-				Created by{' '}
-				<span className="text-sky-500 dark:text-sky-400">{data.name}</span>
-			</h3>
-		</div>
+			<Footer data={data} />
+		</main>
 	);
 }

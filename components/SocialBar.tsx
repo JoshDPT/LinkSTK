@@ -23,7 +23,7 @@ export default function SocialBar({ links }: SocialProps) {
 	const filteredSocials = socialIcons.filter((icon) => map.has(icon.name));
 
 	return (
-		<div>
+		<section>
 			{filteredLinks.length > 0 && (
 				<div className="flex mb-8 mx-auto space-x-2">
 					{filteredSocials.map((icon) => (
@@ -36,6 +36,6 @@ export default function SocialBar({ links }: SocialProps) {
 					))}
 				</div>
 			)}
-		</div>
+		</section>
 	);
 }

@@ -2,7 +2,7 @@ type HeaderProps = {
 	data: {
 		name: string;
 	};
-	profile: StaticImageData;
+	profile?: StaticImageData;
 };
 
 type LinkProps = {

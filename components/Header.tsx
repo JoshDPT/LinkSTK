@@ -18,7 +18,7 @@ export default function Header({ data, profile }: HeaderProps) {
 	}, []);
 
 	return (
-		<div
+		<header
 			className={`fixed left-1/2 -translate-x-1/2 top-3 h-16 content-center w-full max-w-3xl z-10 bg-white/30 backdrop-blur-md ring-1 ring-gray-400/30 rounded-full flex flex-row px-3 justify-between items-center ${
 				scrollPosition >= 46 ? '' : 'invisible'
 			}`}
@@ -39,6 +39,6 @@ export default function Header({ data, profile }: HeaderProps) {
 			</div>
 			{/* <DarkModeButton /> */}
 			<div className='h-8 w-8'></div>
-		</div>
+		</header>
 	);
 }
