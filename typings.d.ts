@@ -1,11 +1,10 @@
 type HeaderProps = {
-	data: {
-		name: string;
-	};
+	name: string;
 	profile: StaticImageData;
 };
 
 type LinkProps = {
+	id: number;
 	title: string;
 	href: string;
 	image?: string | any;

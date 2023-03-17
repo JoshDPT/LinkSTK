@@ -4,7 +4,7 @@ import Image, { StaticImageData } from 'next/image';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { useState, useEffect } from 'react';
 
-export default function Header({ data, profile }: HeaderProps) {
+export default function Header({ name, profile }: HeaderProps) {
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {
@@ -33,12 +33,12 @@ export default function Header({ data, profile }: HeaderProps) {
 			/>
 			<div className="flex flex-row content-center items-center">
 				<h3 className="flex text-lg text-black dark:text-white font-bold select-none">
-					{data.name}
+					{name}
 				</h3>
 				<CheckBadgeIcon className="flex w-5 h-5 text-sky-500 dark:text-sky-400 font-bold select-none" />
 			</div>
 			{/* <DarkModeButton /> */}
-			<div className='h-8 w-8'></div>
+			<div className="h-8 w-8"></div>
 		</div>
 	);
 }

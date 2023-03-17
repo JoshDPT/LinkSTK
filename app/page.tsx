@@ -1,6 +1,5 @@
 import profile from '@/public/profile.jpeg';
 import Image from 'next/image';
-import data from 'data.json';
 import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
 import Views from '@/components/Views';
@@ -9,9 +8,9 @@ import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
-
 export default async function Home() {
+	const name = 'Joshuah Edwards';
+	const prisma = new PrismaClient();
 	const links = await prisma.link.findMany();
 
 	const socials = new Set([
@@ -26,7 +25,7 @@ export default async function Home() {
 	return (
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
 			{/* Header */}
-			<Header data={data} profile={profile} />
+			<Header name={name} profile={profile} />
 
 			{/* floating DarkModeButton */}
 			{/* TODO: Clean up this div */}
@@ -57,7 +56,7 @@ export default async function Home() {
 			{/* Name */}
 			<div className="flex mx-auto my-8 items-center">
 				<h1 className="text-2xl text-black dark:text-white font-bold select-none transition-all duration-300 ease-out">
-					{data.name}
+					{name}
 				</h1>
 				<CheckBadgeIcon className="static w-5 h-5 text-sky-500 dark:text-sky-400 m-1 -mr-6 font-bold select-none transition-all duration-300 ease-out" />
 			</div>
@@ -77,7 +76,7 @@ export default async function Home() {
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">
 				Created by{' '}
-				<span className="text-sky-500 dark:text-sky-400">{data.name}</span>
+				<span className="text-sky-500 dark:text-sky-400">{name}</span>
 			</h3>
 		</div>
 	);
