@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { ArrowUpOnSquareIcon } from '@heroicons/react/24/outline';
-import { CiExport } from 'react-icons/ci'
+import { CiExport } from 'react-icons/ci';
 
 type LinkProps = {
 	title: string;
@@ -9,26 +8,21 @@ type LinkProps = {
 	clicks: string;
 };
 
-export default function LinkCard(props: LinkProps) {
+export default function LinkCard({ title, href, image }: LinkProps) {
 	return (
 		<a
 			className="group flex items-center p-1 rounded-full w-full max-w-2xl bg-slate-200 dark:bg-slate-800 hover:scale-105 transition-all border border-slate-500 mb-4 h-16 shadow-m hover:shadow-2xl hover:bg-white dark:hover:bg-slate-700 duration-200 ease-out"
-			href={props.href}
+			href={href}
 			target="_blank"
 		>
 			<div className="h-12 w-12 relative object-cover rounded-full">
-				<Image
-					className="rounded-full"
-					src={props.image}
-					alt={props.title}
-					fill={true}
-				/>
+				{image && (
+					<Image className="rounded-full" src={image} alt={title} fill={true} />
+				)}
 			</div>
 
 			<div className="flex flex-col items-center justify-center mx-auto ">
-				<h2 className="font-semibold text-size-xl justify-center">
-					{props.title}
-				</h2>
+				<h2 className="font-semibold text-size-xl justify-center">{title}</h2>
 			</div>
 
 			<div>
