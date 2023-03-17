@@ -7,8 +7,13 @@ import Views from '@/components/Views';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
+import { PrismaClient } from '@prisma/client';
 
-export default function Home() {
+const prisma = new PrismaClient();
+
+export default async function Home() {
+	const links = await prisma.link.findMany();
+
 	const socials = new Set([
 		'facebook',
 		'github',
@@ -22,6 +27,12 @@ export default function Home() {
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
 			{/* Header */}
 			<Header data={data} profile={profile} />
+
+			{/* floating DarkModeButton */}
+			{/* TODO: Clean up this div */}
+			<div className="fixed left-1/2 -translate-x-1/2 top-3 h-16 content-center w-full max-w-3xl z-10 rounded-full flex flex-row px-3 justify-end items-center">
+				<DarkModeButton />
+			</div>
 
 			{/* Profile picture with two animated shadows */}
 			<span
@@ -51,10 +62,10 @@ export default function Home() {
 				<CheckBadgeIcon className="static w-5 h-5 text-sky-500 dark:text-sky-400 m-1 -mr-6 font-bold select-none transition-all duration-300 ease-out" />
 			</div>
 
-			<SocialBar />
+			<SocialBar links={links} />
 
 			{/* Link cards */}
-			{data.links
+			{links
 				.filter((e) => !socials.has(e.title))
 				.map((link) => (
 					<LinkCard key={link.href} {...link} />

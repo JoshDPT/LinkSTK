@@ -9,5 +9,9 @@ type LinkProps = {
 	title: string;
 	href: string;
 	image?: string | any;
-	clicks: string;
+	clicks: number;
+};
+
+type SocialProps = {
+	links: LinkProps[];
 };
