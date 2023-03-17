@@ -5,13 +5,6 @@ import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import DarkModeButton from './DarkModeButton';
 import { useState, useEffect } from 'react';
 
-type HeaderProps = {
-	data: {
-		name: string;
-	};
-	profile: StaticImageData;
-};
-
 export default function Header({ data, profile }: HeaderProps) {
 	const [scrollPosition, setScrollPosition] = useState(0);
 

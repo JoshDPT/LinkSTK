@@ -1,13 +1,6 @@
 import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
 
-type LinkProps = {
-	title: string;
-	href: string;
-	image?: string | any;
-	clicks: string;
-};
-
 export default function LinkCard({ title, href, image }: LinkProps) {
 	return (
 		<a

@@ -1,36 +1,36 @@
-'use client'
+'use client';
 
-import { useTheme } from "next-themes"
-import { useState, useEffect, use } from "react"
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid"
+import { useTheme } from 'next-themes';
+import { useState, useEffect, use } from 'react';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 
-export default function DarkModeButton () {
-    const [mounted, setMounted] = useState(false);
-    const { systemTheme, theme, setTheme } = useTheme();
-    
-    useEffect(()=> {
-      setMounted(true);
-    }, []);
+export default function DarkModeButton() {
+	const [mounted, setMounted] = useState(false);
+	const { systemTheme, theme, setTheme } = useTheme();
 
-    if(!mounted) {
-      return null;
-    }
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
-    const currentTheme = theme === 'system' ? systemTheme : theme;
+	if (!mounted) {
+		return null;
+	}
 
-  return (
-    <div className="flex items-center">
-      {currentTheme === 'dark' ? (
-        <SunIcon
-          className="h-8 w-8 cursor-pointer text-yellow-500"
-          onClick={()=> setTheme('light')}
-          />
-      ) : (
-        <MoonIcon
-          className="h-8 w-8 cursor-pointer text-violet-500"
-          onClick={()=> setTheme('dark')}
-        />
-      )}
-    </div>
-  )
+	const currentTheme = theme === 'system' ? systemTheme : theme;
+
+	return (
+		<div className="flex items-center">
+			{currentTheme === 'dark' ? (
+				<SunIcon
+					className="h-8 w-8 cursor-pointer text-yellow-500"
+					onClick={() => setTheme('light')}
+				/>
+			) : (
+				<MoonIcon
+					className="h-8 w-8 cursor-pointer text-violet-500"
+					onClick={() => setTheme('dark')}
+				/>
+			)}
+		</div>
+	);
 }
