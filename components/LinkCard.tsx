@@ -2,8 +2,11 @@
 import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
 import updateLink from '@/lib/updateLink';
+import Clicks from './Clicks';
 
 // needs to tie in clicks with state to update with each click on the client side? could possibly useSWR for some easy to use real time updates
+
+// bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-rose-400 via-fuchsia-500 to-indigo-500
 
 export default function LinkCard({
 	id,
@@ -41,9 +44,7 @@ export default function LinkCard({
 				<CiExport className="h-6 w-6 m-3 text-slate-500 invisible group-hover:visible" />
 				{/* <ArrowUpOnSquareIcon className="h-12 w-12 m-4 text-slate-500 invisible group-hover:visible" /> */}
 			</div>
-			<div className="absolute flex bg-purple-500 text-white text-xs h-7 w-7 rounded-full items-center justify-center -top-2 -right-3 shadow-lg">
-				{clicks}
-			</div>
+			<Clicks clicks={clicks}/>
 		</a>
 	);
 }

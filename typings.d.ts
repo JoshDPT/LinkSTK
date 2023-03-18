@@ -14,3 +14,7 @@ type LinkProps = {
 type SocialProps = {
 	links: LinkProps[];
 };
+
+type ClickProps = {
+	clicks: number
+}
