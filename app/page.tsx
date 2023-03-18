@@ -6,12 +6,23 @@ import Views from '@/components/Views';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
-import { PrismaClient } from '@prisma/client';
+
+// OPTION 1: typical API fetch request
+async function getLinks() {
+	const res = await fetch(`${process.env.BASE_URL}/api/links`);
+	if (!res.ok) {
+		console.log(res);
+	}
+	return res.json();
+}
 
 export default async function Home() {
 	const name = 'Joshuah Edwards';
-	const prisma = new PrismaClient();
-	const links = await prisma.link.findMany();
+
+	// OPTION 2: direct Prisma query - SSR
+	// const prisma = new PrismaClient();
+	// const links = await prisma.link.findMany();
+	const links = await getLinks();
 
 	const socials = new Set([
 		'facebook',
@@ -65,8 +76,8 @@ export default async function Home() {
 
 			{/* Link cards */}
 			{links
-				.filter((e) => !socials.has(e.title))
-				.map((link) => (
+				.filter((e: LinkProps) => !socials.has(e.title))
+				.map((link: LinkProps) => (
 					<LinkCard key={link.href} {...link} />
 				))}
 
