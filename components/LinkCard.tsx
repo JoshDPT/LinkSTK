@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
 import updateLink from '@/lib/updateLink';
 
+// needs to tie in clicks with state to update with each click on the client side? could possibly useSWR for some easy to use real time updates
+
 export default function LinkCard({
 	id,
 	title,

@@ -1,7 +1,8 @@
 export default async function updateLink(id: number, clicks: number) {
 	// needs better error handling
+	// needs to add some authorization?
 	clicks = clicks + 1;
-	const response = await fetch(`http://localhost:3000/api/click`, {
+	const response = await fetch(`/api/click`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
