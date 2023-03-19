@@ -16,12 +16,17 @@ async function getLinks() {
 	return res.json();
 }
 
+// OPTION 3: useSWR
+// const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 export default async function Home() {
 	const name = 'Joshuah Edwards';
 
 	// OPTION 2: direct Prisma query - SSR
 	// const prisma = new PrismaClient();
 	// const links = await prisma.link.findMany();
+
+	// OPTION 1: typical API req
 	const links = await getLinks();
 
 	const socials = new Set([

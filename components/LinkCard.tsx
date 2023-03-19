@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
 import updateLink from '@/lib/updateLink';
 import Clicks from './Clicks';
+import { useState } from 'react';
 
 // needs to tie in clicks with state to update with each click on the client side? could possibly useSWR for some easy to use real time updates
 
@@ -15,13 +16,20 @@ export default function LinkCard({
 	image,
 	clicks,
 }: LinkProps) {
+	const [count, setCount] = useState(clicks);
+
+	const incrementCount = () => {
+		setCount(count + 1);
+	};
+
 	return (
 		<a
 			className="group flex items-center p-1 rounded-full w-full max-w-2xl bg-slate-200 dark:bg-slate-800 hover:scale-105 transition-all border border-slate-500 mb-4 h-16 shadow-m hover:shadow-2xl hover:bg-white dark:hover:bg-slate-700 duration-200 ease-out relative"
 			href={href}
 			target="_blank"
-			onClick={() => {
-				updateLink(id, clicks)
+			onMouseDown={() => {
+				incrementCount();
+				updateLink(id, count)
 					.then((data) => {
 						console.log('Link updated successfully:', data);
 					})
@@ -44,7 +52,7 @@ export default function LinkCard({
 				<CiExport className="h-6 w-6 m-3 text-slate-500 invisible group-hover:visible" />
 				{/* <ArrowUpOnSquareIcon className="h-12 w-12 m-4 text-slate-500 invisible group-hover:visible" /> */}
 			</div>
-			<Clicks clicks={clicks}/>
+			<Clicks clicks={count} />
 		</a>
 	);
 }
