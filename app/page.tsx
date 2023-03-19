@@ -6,15 +6,11 @@ import Views from '@/components/Views';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
+import { PrismaClient } from '@prisma/client';
+import getLinks from '@/lib/getLinks';
 
 // OPTION 1: typical API fetch request
-async function getLinks() {
-	const res = await fetch(`${process.env.BASE_URL}/api/links`);
-	if (!res.ok) {
-		console.log(res);
-	}
-	return res.json();
-}
+
 
 // OPTION 3: useSWR
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -28,6 +24,7 @@ export default async function Home() {
 
 	// OPTION 1: typical API req
 	const links = await getLinks();
+	console.log(links)
 
 	const socials = new Set([
 		'facebook',
