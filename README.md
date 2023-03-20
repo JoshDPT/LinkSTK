@@ -9,20 +9,20 @@ _an open-source link tree for developers_
 
 * Dark/Light mode button
 * Hover animated link cards
+* Animated navigation bar
+* Custom footer - logo/signature
+* Individual link analytics - clicks
+* SEO Optimization - Next Meta
 
 **_<span style="text-decoration:underline;">Stretch Features</span>_**
 
 
 
-* Animated navigation bar
 * Collection - emails / phone numbers
 * Code lock - protect link with a secret code
 * High-priority link - animated styling
 * Link payment lock - sell PDFs by putting a lock on the link
-* Custom footer - logo/signature
-* Individual link analytics - mainly clicks
-* SEO Optimization
-* Home page views - with google analytics
+* Home page views - Google Analytics
 
 **_<span style="text-decoration:underline;">Stack</span>_**
 
