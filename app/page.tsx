@@ -9,6 +9,7 @@ import Header from '@/components/Header';
 import { PrismaClient } from '@prisma/client';
 import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
+import { socials } from '@/constants';
 
 // OPTION 1: typical API fetch request
 
@@ -27,14 +28,7 @@ export default async function Home() {
 	const links = await getLinks();
 	console.log(links);
 
-	const socials = new Set([
-		'facebook',
-		'github',
-		'instagram',
-		'linkedin',
-		'twitter',
-		'youtube',
-	]);
+	const socialsSet = new Set(socials);
 
 	return (
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
@@ -95,7 +89,7 @@ export default async function Home() {
 
 			{/* Link cards */}
 			{links
-				.filter((e: LinkProps) => !socials.has(e.title))
+				.filter((e: LinkProps) => !socialsSet.has(e.title))
 				.map((link: LinkProps) => (
 					<LinkCard key={link.href} {...link} />
 				))}
