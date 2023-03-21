@@ -8,15 +8,16 @@ import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
 import { PrismaClient } from '@prisma/client';
 import getLinks from '@/lib/getLinks';
+import Head from 'next/head';
 
 // OPTION 1: typical API fetch request
-
 
 // OPTION 3: useSWR
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default async function Home() {
 	const name = 'Joshuah Edwards';
+	const picture = 'https://source.unsplash.com/KsArqEFLUPo';
 
 	// OPTION 2: direct Prisma query - SSR
 	// const prisma = new PrismaClient();
@@ -24,7 +25,7 @@ export default async function Home() {
 
 	// OPTION 1: typical API req
 	const links = await getLinks();
-	console.log(links)
+	console.log(links);
 
 	const socials = new Set([
 		'facebook',
@@ -37,8 +38,24 @@ export default async function Home() {
 
 	return (
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
+			<title>{name}</title>
+			{/* SAMPLE NEW NEXT METADATA */}
+			<Head>
+				<title>LinkSTK</title>
+				<meta name="description" content="Checkout our cool page" key="desc" />
+				<meta property="og:title" content="Social Title for Cool Page" />
+				<meta
+					property="og:description"
+					content="And a social description for our cool page"
+				/>
+				<meta
+					property="og:image"
+					content="https://example.com/images/cool-page.jpg"
+				/>
+			</Head>
+
 			{/* Header */}
-			<Header name={name} profile={profile} />
+			<Header name={name} profile={picture} />
 
 			{/* floating DarkModeButton */}
 			{/* TODO: Clean up this div */}
@@ -58,7 +75,7 @@ export default async function Home() {
 						shadow-[30px_35px_60px_-15px_rgba(0,255,255,.5)] 
 						dark:shadow-[30px_35px_60px_-15px_rgba(153,0,205,.5)]
 						transition-all duration-500 ease-out"
-					src={profile}
+					src={picture}
 					alt="profile picture"
 					height={96}
 					width={96}

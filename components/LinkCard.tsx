@@ -38,9 +38,9 @@ export default function LinkCard({
 					});
 			}}
 		>
-			<div className="h-12 w-12 relative object-cover rounded-full">
+			<div className="relative h-12 w-12 rounded-full">
 				{image && (
-					<Image className="rounded-full" src={image} alt={title} fill={true} />
+					<Image className="rounded-full w-full object-cover" src={image} alt={title} fill={true} />
 				)}
 			</div>
 
