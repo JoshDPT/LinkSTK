@@ -39,18 +39,18 @@ export default async function Home() {
 	return (
 		<div className="flex items-center flex-col mx-auto w-full max-w-2xl px-8 justify-center mt-16">
 			<title>{name}</title>
-			{/* SAMPLE NEW NEXT METADATA */}
+			{/* EXAMPLE NEW NEXT METADATA */}
 			<Head>
 				<title>LinkSTK</title>
-				<meta name="description" content="Checkout our cool page" key="desc" />
-				<meta property="og:title" content="Social Title for Cool Page" />
+				<meta name="description" content="LinkSTK is an open-source link tree for developers" key="desc" />
+				<meta property="og:title" content={`LinkSTK for ${name}`} />
 				<meta
 					property="og:description"
-					content="And a social description for our cool page"
+					content="This page shows all of our links to pages I want to share"
 				/>
 				<meta
 					property="og:image"
-					content="https://example.com/images/cool-page.jpg"
+					content=""
 				/>
 			</Head>
 
@@ -59,7 +59,7 @@ export default async function Home() {
 
 			{/* floating DarkModeButton */}
 			{/* TODO: Clean up this div */}
-			<div className="fixed left-1/2 -translate-x-1/2 top-3 h-16 content-center w-full max-w-3xl z-10 rounded-full flex flex-row px-3 justify-end items-center">
+			<div className="fixed left-1/2 -translate-x-1/2 top-3 h-16 content-center w-full lg:max-w-3xl z-10 rounded-full flex flex-row px-3 justify-end items-center">
 				<DarkModeButton />
 			</div>
 

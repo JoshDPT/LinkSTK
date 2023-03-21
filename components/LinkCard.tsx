@@ -40,7 +40,12 @@ export default function LinkCard({
 		>
 			<div className="relative h-12 w-12 rounded-full">
 				{image && (
-					<Image className="rounded-full w-full object-cover" src={image} alt={title} fill={true} />
+					<Image
+						className="rounded-full w-full object-cover"
+						src={image}
+						alt={title}
+						fill={true}
+					/>
 				)}
 			</div>
 
