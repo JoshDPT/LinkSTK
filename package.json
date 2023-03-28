@@ -25,6 +25,8 @@
     "swr": "^2.1.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.0",
     "@types/node": "^18.15.3",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

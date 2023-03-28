@@ -18,3 +18,4 @@ type SocialProps = {
 type ClickProps = {
 	clicks: number
 }
+
