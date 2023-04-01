@@ -11,17 +11,17 @@ datasource db {
 }
 
 model Link {
-  id      Int     @id @default(autoincrement())
-  title   String
-  href    String
-  image   String?
-  clicks  Int
-  views Views[]
+  id     Int     @id @default(autoincrement())
+  title  String
+  href   String
+  image  String?
+  clicks Int
+  views  Views[]
 }
 
 model Views {
-  id          Int       @id @default(autoincrement())
-  date        DateTime
-  viewsCount  Int       @default(1)
-  link        Link      @relation(fields: [id], references: [id])
+  id         Int      @id @default(autoincrement())
+  date       DateTime
+  viewsCount Int      @default(1)
+  link       Link     @relation(fields: [id], references: [id])
 }

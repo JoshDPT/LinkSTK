@@ -17,7 +17,6 @@ import { socials } from '@/constants';
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default async function Home() {
-
 	// const name = 'Joshuah Edwards';
 	// const picture = 'https://source.unsplash.com/KsArqEFLUPo'
 	// OPTION 2: direct Prisma query - SSR
@@ -26,8 +25,8 @@ export default async function Home() {
 
 	// OPTION 1: typical API req
 	// const links = await getLinks();
-	console.log(links)
-	const main = links.find((e) => e.title === 'main')
+	console.log(links);
+	const main = links.find((e) => e.title === 'main');
 	const name = main?.href;
 	const picture = main?.image;
 
@@ -94,11 +93,12 @@ export default async function Home() {
 			{/* Link cards */}
 			{links &&
 				links
-					.filter((e: LinkProps) => !socialsSet.has(e.title)).filter((e: LinkProps)=> e.title !== 'main')
+					.filter((e: LinkProps) => !socialsSet.has(e.title))
+					.filter((e: LinkProps) => e.title !== 'main')
 					.map((link: LinkProps) => <LinkCard key={link.href} {...link} />)}
 
 			{/* Page views */}
-			<Views clicks={main?.clicks} id={main?.id}/>
+			<Views clicks={main?.clicks} id={main?.id} />
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">

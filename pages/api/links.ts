@@ -9,5 +9,5 @@ export default async function handler(
 ) {
 	const links = await prisma.link.findMany();
 	res.status(200).json(links);
-
+	await prisma.$disconnect();
 }
