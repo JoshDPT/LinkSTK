@@ -34,5 +34,7 @@ export default async function handler(
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ message: 'Something went wrong.' });
+	} finally {
+		await prisma.$disconnect();
 	}
 }

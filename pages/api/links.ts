@@ -7,6 +7,13 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const links = await prisma.link.findMany();
-	res.status(200).json(links);
+	try {
+		const links = await prisma.link.findMany();
+		res.status(200).json(links);
+	} catch {
+		console.error(Error);
+		res.status(500).json({ message: 'Internal server error' });
+	} finally {
+		await prisma.$disconnect();
+	}
 }
