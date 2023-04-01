@@ -17,16 +17,19 @@ import { socials } from '@/constants';
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default async function Home() {
-	const name = 'Joshuah Edwards';
-	const picture = 'https://source.unsplash.com/KsArqEFLUPo';
 
+	// const name = 'Joshuah Edwards';
+	// const picture = 'https://source.unsplash.com/KsArqEFLUPo'
 	// OPTION 2: direct Prisma query - SSR
-	// const prisma = new PrismaClient();
-	// const links = await prisma.link.findMany();
+	const prisma = new PrismaClient();
+	const links = await prisma.link.findMany();
 
 	// OPTION 1: typical API req
-	const links = await getLinks();
-	console.log(links);
+	// const links = await getLinks();
+	console.log(links)
+	const main = links.find((e) => e.title === 'main')
+	const name = main?.href;
+	const picture = main?.image;
 
 	const socialsSet = new Set(socials);
 
@@ -36,16 +39,17 @@ export default async function Home() {
 			{/* EXAMPLE NEW NEXT METADATA */}
 			<Head>
 				<title>LinkSTK</title>
-				<meta name="description" content="LinkSTK is an open-source link tree for developers" key="desc" />
+				<meta
+					name="description"
+					content="LinkSTK is an open-source link tree for developers"
+					key="desc"
+				/>
 				<meta property="og:title" content={`LinkSTK for ${name}`} />
 				<meta
 					property="og:description"
 					content="This page shows all of our links to pages I want to share"
 				/>
-				<meta
-					property="og:image"
-					content=""
-				/>
+				<meta property="og:image" content="" />
 			</Head>
 
 			{/* Header */}
@@ -88,14 +92,13 @@ export default async function Home() {
 			<SocialBar links={links} />
 
 			{/* Link cards */}
-			{links
-				.filter((e: LinkProps) => !socialsSet.has(e.title))
-				.map((link: LinkProps) => (
-					<LinkCard key={link.href} {...link} />
-				))}
+			{links &&
+				links
+					.filter((e: LinkProps) => !socialsSet.has(e.title)).filter((e: LinkProps)=> e.title !== 'main')
+					.map((link: LinkProps) => <LinkCard key={link.href} {...link} />)}
 
 			{/* Page views */}
-			<Views />
+			<Views clicks={main?.clicks} id={main?.id}/>
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">

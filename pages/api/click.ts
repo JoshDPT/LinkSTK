@@ -21,20 +21,14 @@ export default async function handler(
 
 	const { id, clicks } = req.body;
 
-	try {
-		const updateLink = await prisma.link.update({
-			where: {
-				id: id,
-			},
-			data: {
-				clicks: clicks,
-			},
-		});
-		res.status(200).json(updateLink);
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ message: 'Something went wrong.' });
-	} finally {
-		await prisma.$disconnect();
-	}
+	const updateLink = await prisma.link.update({
+		where: {
+			id: id,
+		},
+		data: {
+			clicks: clicks,
+		},
+	});
+	res.status(200).json(updateLink);
+	await prisma.$disconnect();
 }

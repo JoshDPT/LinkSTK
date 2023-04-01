@@ -15,7 +15,7 @@ model Link {
   title   String
   href    String
   image   String?
-  clicks  BigInt
+  clicks  Int
   views Views[]
 }
 
