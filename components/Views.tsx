@@ -2,6 +2,7 @@
 import { ChartBarIcon } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 import updateLink from '@/lib/updateLink';
+import axios from 'axios';
 
 interface Props {
 	id: number;
@@ -11,19 +12,20 @@ interface Props {
 export default function Views({ clicks, id }: Props) {
 	const [count, setCount] = useState(clicks);
 
-	const incrementCount = () => {
+	async function incrementCount() {
 		setCount(count + 1);
-	};
+	}
+
+	// async function update() {
+	// 	await axios.post('http://localhost:3000/api/click', { id, clicks });
+	// }
 
 	useEffect(() => {
-		incrementCount();
-		updateLink(id, count)
-			.then((data) => {
-				console.log('Link updated successfully:', data);
-			})
-			.catch((error) => {
-				console.error('Failed to update link:', error);
-			});
+		// incrementCount();
+		// // call the function
+		// update()
+		// 	// make sure to catch any error
+		// 	.catch(console.error);
 	}, []);
 
 	return (

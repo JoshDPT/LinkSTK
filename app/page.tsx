@@ -7,9 +7,9 @@ import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
 import { PrismaClient } from '@prisma/client';
-import getLinks from '@/lib/getLinks';
+// import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
-import { socials } from '@/constants';
+import { defaultPicture, socials } from '@/constants';
 
 // OPTION 1: typical API fetch request
 
@@ -22,13 +22,14 @@ export default async function Home() {
 	// OPTION 2: direct Prisma query - SSR
 	const prisma = new PrismaClient();
 	const links = await prisma.link.findMany();
+	await prisma.$disconnect();
 
 	// OPTION 1: typical API req
 	// const links = await getLinks();
 	console.log(links);
 	const main = links.find((e) => e.title === 'main');
-	const name = main?.href;
-	const picture = main?.image;
+	const name = main?.href ?? 'unknown';
+	const picture = main?.image ?? defaultPicture;
 
 	const socialsSet = new Set(socials);
 
@@ -98,7 +99,7 @@ export default async function Home() {
 					.map((link: LinkProps) => <LinkCard key={link.href} {...link} />)}
 
 			{/* Page views */}
-			<Views clicks={main?.clicks} id={main?.id} />
+			{main && <Views clicks={main?.clicks} id={main?.id} />}
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">

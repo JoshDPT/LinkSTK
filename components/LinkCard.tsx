@@ -1,9 +1,11 @@
 'use client';
 import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
+import axios from 'axios';
 import updateLink from '@/lib/updateLink';
 import Clicks from './Clicks';
 import { useState, useEffect } from 'react';
+// import addView from '@/lib/newAddView';
 
 // needs to tie in clicks with state to update with each click on the client side? could possibly useSWR for some easy to use real time updates
 
@@ -18,7 +20,15 @@ export default function LinkCard({
 }: LinkProps) {
 	const [count, setCount] = useState(clicks);
 
-	useEffect(() => {
+	// async function handleClick() {
+	//   const view = await fetch(`/api/views/${id}`, { method: 'POST' }).then(res => res.json())
+	//   setViews(view.viewsCount)
+	// }
+	const incrementCount = () => {
+		setCount(count + 1);
+	};
+	function clickHandler() {
+		incrementCount()
 		updateLink(id, count)
 			.then((data) => {
 				console.log('Link updated successfully:', data);
@@ -26,20 +36,14 @@ export default function LinkCard({
 			.catch((error) => {
 				console.error('Failed to update link:', error);
 			});
-	}, [count, id]);
-
-	const incrementCount = () => {
-		setCount(count + 1);
-	};
+	}
 
 	return (
 		<a
 			className="group flex items-center p-1 rounded-full w-full max-w-2xl bg-slate-200 dark:bg-slate-800 hover:scale-105 transition-all border border-slate-500 mb-4 h-16 shadow-m hover:shadow-2xl hover:bg-white dark:hover:bg-slate-700 duration-200 ease-out relative"
 			href={href}
 			target="_blank"
-			onMouseDown={() => {
-				incrementCount();
-			}}
+			onMouseDown={clickHandler}
 		>
 			<div className="relative h-12 w-12 rounded-full">
 				{image && (

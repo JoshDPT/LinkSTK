@@ -19,16 +19,58 @@ export default async function handler(
 		return;
 	}
 
-	const { id, clicks } = req.body;
+	const { id } = req.body;
 
-	const updateLink = await prisma.link.update({
+	const today = new Date();
+	// Set the hours, minutes, seconds, and milliseconds to 0
+	today.setHours(0);
+	today.setMinutes(0);
+	today.setSeconds(0);
+	today.setMilliseconds(0);
+
+	// Check if a View row already exists for the current date and linkId
+	const existingView = await prisma.view.findFirst({
 		where: {
-			id: id,
-		},
-		data: {
-			clicks: clicks,
+			linkId: id,
+			date: today,
 		},
 	});
-	res.status(200).json(updateLink);
-	await prisma.$disconnect();
+
+	if (existingView) {
+		// If a View row exists, increment the viewsCount
+		let views = await prisma.view.update({
+			where: {
+				id: existingView.id,
+			},
+			data: {
+				viewsCount: existingView.viewsCount + 1,
+			},
+		});
+		res.status(200).json(views);
+		await prisma.$disconnect();
+	} else {
+		// If a View row does not exist, create a new row
+		let views = await prisma.view.create({
+			data: {
+				date: today,
+				viewsCount: 1,
+				link: {
+					connect: {
+						id: id,
+					},
+				},
+			},
+		});
+		res.status(200).json(views);
+		await prisma.$disconnect();
+	}
 }
+
+// const updateLink = await prisma.link.update({
+// 	where: {
+// 		id: id,
+// 	},
+// 	data: {
+// 		clicks: clicks,
+// 	},
+// });

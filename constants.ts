@@ -27,3 +27,5 @@ export const socials = [
 	'twitter',
 	'youtube',
 ];
+
+export const defaultPicture = 'https://source.unsplash.com/2LowviVHZ-E';

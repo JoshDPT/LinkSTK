@@ -1,27 +1,21 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import addView from '@/lib/addView';
+// import type { NextApiRequest, NextApiResponse } from 'next';
+// import addView from '@/lib/view';
 
-// needs to add some authorization??
+// export default async function handler(
+// 	req: NextApiRequest,
+// 	res: NextApiResponse
+// ) {
+// 	const { linkId } = req.query;
+// 	console.log(linkId);
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
-	try {
-		const { linkId } = req.body;
-
-		// Validate linkId
-		if (!linkId || typeof linkId !== 'string') {
-			throw new Error('Invalid linkId');
-		}
-
-		// Add view to link
-		await addView(linkId);
-
-		// Return success response
-		res.status(200).json({ message: 'View added successfully' });
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ message: 'Internal server error' });
-	}
-}
+// 	try {
+// 		const view = await addView(Number(linkId));
+// 		res.status(200).json(view);
+// 	} catch (error) {
+// 		if (error instanceof Error) {
+// 			res.status(500).json({ error: error.message });
+// 		} else {
+// 			res.status(500).json({ error: 'Unknown error occurred' });
+// 		}
+// 	}
+// }
