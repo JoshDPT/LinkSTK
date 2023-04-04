@@ -1,7 +1,13 @@
-// export default async function getLinks() {
-// 	const res = await fetch(`${process.env.BASE_URL}/api/links`);
-// 	if (!res.ok) {
-// 		console.log(res);
-// 	}
-// 	return res.json();
-// }
+import { PrismaClient } from '@prisma/client';
+
+export default async function getLinks() {
+	const prisma = new PrismaClient();
+	const links = await prisma.link.findMany();
+	// const links = await prisma.link.findMany({
+	// 	include: {
+	// 		views: true,
+	// 	},
+	// });
+	await prisma.$disconnect();
+  return links;
+}

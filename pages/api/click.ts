@@ -21,6 +21,12 @@ export default async function handler(
 
 	const { id } = req.body;
 
+	// first, update views on the link itself
+	const updatedLink = await prisma.link.update({
+		where: { id: id },
+		data: { clicks: { increment: 1 } },
+	});
+
 	const today = new Date();
 	// Set the hours, minutes, seconds, and milliseconds to 0
 	today.setHours(0);
@@ -46,8 +52,9 @@ export default async function handler(
 				viewsCount: existingView.viewsCount + 1,
 			},
 		});
-		res.status(200).json(views);
 		await prisma.$disconnect();
+		res.status(200).json(views);
+
 	} else {
 		// If a View row does not exist, create a new row
 		let views = await prisma.view.create({
@@ -61,16 +68,7 @@ export default async function handler(
 				},
 			},
 		});
-		res.status(200).json(views);
 		await prisma.$disconnect();
+		res.status(200).json(views);
 	}
 }
-
-// const updateLink = await prisma.link.update({
-// 	where: {
-// 		id: id,
-// 	},
-// 	data: {
-// 		clicks: clicks,
-// 	},
-// });

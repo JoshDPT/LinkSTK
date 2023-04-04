@@ -1,15 +1,9 @@
 'use client';
 import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
-import axios from 'axios';
 import updateLink from '@/lib/updateLink';
 import Clicks from './Clicks';
-import { useState, useEffect } from 'react';
-// import addView from '@/lib/newAddView';
-
-// needs to tie in clicks with state to update with each click on the client side? could possibly useSWR for some easy to use real time updates
-
-// bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-rose-400 via-fuchsia-500 to-indigo-500
+import { useState } from 'react';
 
 export default function LinkCard({
 	id,
@@ -20,15 +14,8 @@ export default function LinkCard({
 }: LinkProps) {
 	const [count, setCount] = useState(clicks);
 
-	// async function handleClick() {
-	//   const view = await fetch(`/api/views/${id}`, { method: 'POST' }).then(res => res.json())
-	//   setViews(view.viewsCount)
-	// }
-	const incrementCount = () => {
-		setCount(count + 1);
-	};
 	function clickHandler() {
-		incrementCount()
+		setCount(count + 1)
 		updateLink(id, count)
 			.then((data) => {
 				console.log('Link updated successfully:', data);
@@ -52,6 +39,7 @@ export default function LinkCard({
 						src={image}
 						alt={title}
 						fill={true}
+						sizes="(max-width: 640px) 100vw, (max-width: 768px) 200px, 500px"
 					/>
 				)}
 			</div>

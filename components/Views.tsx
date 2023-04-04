@@ -2,30 +2,23 @@
 import { ChartBarIcon } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 import updateLink from '@/lib/updateLink';
-import axios from 'axios';
 
-interface Props {
-	id: number;
-	clicks: number;
-}
-
-export default function Views({ clicks, id }: Props) {
+export default function Views({ clicks, id }: ViewProps) {
 	const [count, setCount] = useState(clicks);
 
-	async function incrementCount() {
+	function clickHandler() {
 		setCount(count + 1);
+		updateLink(id, count)
+			.then((data) => {
+				console.log('Link updated successfully:', data);
+			})
+			.catch((error) => {
+				console.error('Failed to update link:', error);
+			});
 	}
 
-	// async function update() {
-	// 	await axios.post('http://localhost:3000/api/click', { id, clicks });
-	// }
-
 	useEffect(() => {
-		// incrementCount();
-		// // call the function
-		// update()
-		// 	// make sure to catch any error
-		// 	.catch(console.error);
+		clickHandler();
 	}, []);
 
 	return (

@@ -19,3 +19,7 @@ type ClickProps = {
 	clicks: number
 }
 
+interface ViewProps {
+	id: number;
+	clicks: number;
+}

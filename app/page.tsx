@@ -7,7 +7,7 @@ import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
 import { PrismaClient } from '@prisma/client';
-// import getLinks from '@/lib/getLinks';
+import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
 
@@ -20,13 +20,11 @@ export default async function Home() {
 	// const name = 'Joshuah Edwards';
 	// const picture = 'https://source.unsplash.com/KsArqEFLUPo'
 	// OPTION 2: direct Prisma query - SSR
-	const prisma = new PrismaClient();
-	const links = await prisma.link.findMany();
-	await prisma.$disconnect();
+	const links = await getLinks()
 
 	// OPTION 1: typical API req
 	// const links = await getLinks();
-	console.log(links);
+	// console.log(links);
 	const main = links.find((e) => e.title === 'main');
 	const name = main?.href ?? 'unknown';
 	const picture = main?.image ?? defaultPicture;
