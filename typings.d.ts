@@ -23,3 +23,10 @@ interface ViewProps {
 	id: number;
 	clicks: number;
 }
+
+
+
+
+
+
+

@@ -12,6 +12,7 @@ export default function LinkCard({
 	image,
 	clicks,
 }: LinkProps) {
+
 	const [count, setCount] = useState(clicks);
 
 	function clickHandler() {

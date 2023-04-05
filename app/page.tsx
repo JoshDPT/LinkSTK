@@ -1,4 +1,3 @@
-import profile from '@/public/profile.jpeg';
 import Image from 'next/image';
 import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
@@ -6,27 +5,16 @@ import Views from '@/components/Views';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';
-import { PrismaClient } from '@prisma/client';
 import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
 
-// OPTION 1: typical API fetch request
-
-// OPTION 3: useSWR
-// const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 export default async function Home() {
-	// const name = 'Joshuah Edwards';
-	// const picture = 'https://source.unsplash.com/KsArqEFLUPo'
-	// OPTION 2: direct Prisma query - SSR
-	const links = await getLinks()
 
-	// OPTION 1: typical API req
-	// const links = await getLinks();
-	// console.log(links);
+	const links = await getLinks();
+
 	const main = links.find((e) => e.title === 'main');
-	const name = main?.href ?? 'unknown';
+	const name = main?.href ?? 'unknown name';
 	const picture = main?.image ?? defaultPicture;
 
 	const socialsSet = new Set(socials);
