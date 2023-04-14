@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
-import Views from '@/components/Views';
+import Views from '@/components/ViewCount';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import Header from '@/components/Header';

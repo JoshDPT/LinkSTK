@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
 import updateLink from '@/lib/updateLink';
-import Clicks from './Clicks';
+import Clicks from './ClickCount';
 import { useState } from 'react';
 
 export default function LinkCard({
