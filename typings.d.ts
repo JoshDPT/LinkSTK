@@ -1,32 +1,25 @@
-type HeaderProps = {
+interface HeaderProps {
 	name: string;
 	profile: StaticImageData;
-};
+}
 
-type LinkProps = {
+interface LinkProps {
 	id: number;
 	title: string;
 	href: string;
 	image?: string | any;
 	clicks: number;
-};
+}
 
-type SocialProps = {
+interface SocialProps {
 	links: LinkProps[];
-};
+}
 
-type ClickProps = {
-	clicks: number
+interface ClickProps {
+	clicks: number;
 }
 
 interface ViewProps {
 	id: number;
 	clicks: number;
 }
-
-
-
-
-
-
-

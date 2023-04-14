@@ -10,9 +10,8 @@ import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
 
 export default async function Home() {
-
 	const links = await getLinks();
-
+	
 	const main = links.find((e) => e.title === 'main');
 	const name = main?.href ?? 'unknown name';
 	const picture = main?.image ?? defaultPicture;
@@ -82,7 +81,16 @@ export default async function Home() {
 				links
 					.filter((e: LinkProps) => !socialsSet.has(e.title))
 					.filter((e: LinkProps) => e.title !== 'main')
-					.map((link: LinkProps) => <LinkCard key={link.href} {...link} />)}
+					.map((link: LinkProps) => (
+						<LinkCard
+							key={link.href}
+							id={link.id}
+							title={link.title}
+							href={link.href}
+							image={link.image}
+							clicks={link.clicks}
+						/>
+					))}
 
 			{/* Page views */}
 			{main && <Views clicks={main?.clicks} id={main?.id} />}

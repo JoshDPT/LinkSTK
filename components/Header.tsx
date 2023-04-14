@@ -1,6 +1,6 @@
 'use client';
 
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { useState, useEffect } from 'react';
 
