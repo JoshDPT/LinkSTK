@@ -51,7 +51,6 @@ export default function LinkCard({
 
 			<div>
 				<CiExport className="h-6 w-6 m-3 text-slate-500 invisible group-hover:visible" />
-				{/* <ArrowUpOnSquareIcon className="h-12 w-12 m-4 text-slate-500 invisible group-hover:visible" /> */}
 			</div>
 			<Clicks clicks={count} />
 		</a>

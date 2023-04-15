@@ -3,7 +3,7 @@ import { ChartBarIcon } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 import updateLink from '@/lib/updateLink';
 
-export default function Views({ clicks, id }: ViewProps) {
+export default function ViewCount({ clicks, id }: ViewProps) {
 	const [count, setCount] = useState(clicks);
 
 	function clickHandler() {

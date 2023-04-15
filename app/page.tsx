@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
-import Views from '@/components/ViewCount';
+import ViewCount from '@/components/ViewCount';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
-import Header from '@/components/Header';
+import HeaderCard from '@/components/HeaderCard';
 import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
@@ -38,7 +38,7 @@ export default async function Home() {
 			</Head>
 
 			{/* Header */}
-			<Header name={name} profile={picture} />
+			<HeaderCard name={name} profile={picture} />
 
 			{/* floating DarkModeButton */}
 			{/* TODO: Clean up this div */}
@@ -93,7 +93,7 @@ export default async function Home() {
 					))}
 
 			{/* Page views */}
-			{main && <Views clicks={main?.clicks} id={main?.id} />}
+			{main && <ViewCount clicks={main?.clicks} id={main?.id} />}
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">

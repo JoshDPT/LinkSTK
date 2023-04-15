@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { useState, useEffect } from 'react';
 
-export default function Header({ name, profile }: HeaderProps) {
+export default function HeaderCard({ name, profile }: HeaderProps) {
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {
