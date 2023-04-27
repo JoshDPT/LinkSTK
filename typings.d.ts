@@ -23,3 +23,7 @@ interface ViewProps {
 	id: number;
 	clicks: number;
 }
+
+interface LinkViews {
+	
+}

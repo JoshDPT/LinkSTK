@@ -8,7 +8,3 @@ export default async function updateLink(id: number, clicks: number) {
 	});
 	return response.json();
 }
-
-// needs better error handling
-// needs to add some authorization?
-// clicks = clicks + 1;

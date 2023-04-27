@@ -1,16 +1,17 @@
 import Image from 'next/image';
 import LinkCard from '@/components/LinkCard';
 import DarkModeButton from '@/components/DarkModeButton';
-import ViewCount from '@/components/ViewCount';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SocialBar from '@/components/SocialBar';
 import HeaderCard from '@/components/HeaderCard';
 import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
+import PageViewCount from '@/components/PageViewCount';
 
 export default async function Home() {
 	const links = await getLinks();
+	console.log(links.at(0)?.views)
 	
 	const main = links.find((e) => e.title === 'main');
 	const name = main?.href ?? 'unknown name';
@@ -93,7 +94,7 @@ export default async function Home() {
 					))}
 
 			{/* Page views */}
-			{main && <ViewCount clicks={main?.clicks} id={main?.id} />}
+			{main && <PageViewCount clicks={main?.clicks} id={main?.id} />}
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">

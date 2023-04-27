@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import { CiExport } from 'react-icons/ci';
 import updateLink from '@/lib/updateLink';
-import Clicks from './ClickCount';
 import { useState } from 'react';
+import ClickCount from './ClickCount';
 
 export default function LinkCard({
 	id,
@@ -52,7 +52,7 @@ export default function LinkCard({
 			<div>
 				<CiExport className="h-6 w-6 m-3 text-slate-500 invisible group-hover:visible" />
 			</div>
-			<Clicks clicks={count} />
+			<ClickCount clicks={count} />
 		</a>
 	);
 }
