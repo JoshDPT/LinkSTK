@@ -24,6 +24,9 @@ interface ViewProps {
 	clicks: number;
 }
 
-interface LinkViews {
-	
+interface View {
+  id: number;
+  date: Date;
+  viewsCount: number;
+  linkId: number;
 }
