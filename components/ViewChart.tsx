@@ -2,32 +2,32 @@
 import { Card, AreaChart, Title } from '@tremor/react';
 
 interface Props {
+  title: string;
 	views: View[];
 }
 
-export default function ViewChart({ views }: Props) {
-  const days = views.map(e => new Date(e.date).toLocaleString('en-US', {
-    hour: 'numeric',
-    hour12: false
-  })).slice(0, 10);
+export default function ViewChart({ title, views }: Props) {
 
-  const data = views.map((e, i)=> ({
-    time: Number(e.date),
+  const data = views.map((e)=> ({
     'views': e.viewsCount,
+    date: e.date.toLocaleString('en-US', {
+        hour: 'numeric',
+        hour12: false
+      }).slice(5,10)
   }));
 
-  const viewFormatter = (view: number) => `${view} views`
+  const viewFormatter = (view: number) => `${view} Views`
 
 	return (
 		<Card>
-			<Title></Title>
+			<Title>{title}</Title>
 			<AreaChart 
         className='mt-6'
         data={data}
         showLegend
-        index='time'
+        index='date'
         categories={['views']}
-        colors={['rose']}
+        colors={['pink']}
         minValue={0}
         valueFormatter={viewFormatter}
         yAxisWidth={40}

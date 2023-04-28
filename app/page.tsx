@@ -11,8 +11,8 @@ import PageViewCount from '@/components/PageViewCount';
 
 export default async function Home() {
 	const links = await getLinks();
-	console.log(links.at(0)?.views)
-	
+	console.log(links.at(0)?.views);
+
 	const main = links.find((e) => e.title === 'main');
 	const name = main?.href ?? 'unknown name';
 	const picture = main?.image ?? defaultPicture;
@@ -94,7 +94,7 @@ export default async function Home() {
 					))}
 
 			{/* Page views */}
-			{main && <PageViewCount clicks={main?.clicks} id={main?.id} />}
+			{main ? <PageViewCount clicks={main?.clicks} id={main?.id} /> : null}
 
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">
