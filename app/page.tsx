@@ -8,6 +8,7 @@ import getLinks from '@/lib/getLinks';
 import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
 import PageViewCount from '@/components/PageViewCount';
+import Link from 'next/link';
 
 export default async function Home() {
 	const links = await getLinks();
@@ -101,6 +102,7 @@ export default async function Home() {
 				Created by{' '}
 				<span className="text-sky-500 dark:text-sky-400">{name}</span>
 			</h3>
+			<Link className='fixed left-10 bottom-10 bg-slate-700 rounded-full p-2 hover:scale-110 shadow-lg' href='/admin' >Admin</Link>
 		</div>
 	);
 }
