@@ -10,12 +10,12 @@ export default async function Home() {
 			{links.map((e, i) => (
 				<ViewChart key={i} title={e.title} views={e.views} />
 			))}
-			<div className="fixed flex justify-center content-center left-0 w-full h-20 bottom-0 bg-slate-700 p-2 bg-transparent">
+			<div className="fixed flex justify-center content-center left-0 w-full h-20 top-0 p-2 bg-transparent">
 				<Link
-					className="flex w-full max-w-3xl h-16 justify-center content-center items-center rounded-full bg-white/30 backdrop-blur-md ring-1 ring-gray-400/30"
+					className="flex w-full max-w-3xl h-16 justify-center content-center items-center rounded-lg bg-white/30 backdrop-blur-md ring-1 ring-gray-400/30"
 					href="/"
 				>
-					<div className='text-3xl font-bold text-slate-600'>Home</div>
+					<div className='text-3xl font-bold text-gray-800'>Home</div>
 				</Link>
 			</div>
 		</div>

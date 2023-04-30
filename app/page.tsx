@@ -9,6 +9,7 @@ import Head from 'next/head';
 import { defaultPicture, socials } from '@/constants';
 import PageViewCount from '@/components/PageViewCount';
 import Link from 'next/link';
+import SubscriberForm from '@/components/SubscriberForm';
 
 export default async function Home() {
 	const links = await getLinks();
@@ -97,12 +98,14 @@ export default async function Home() {
 			{/* Page views */}
 			{main ? <PageViewCount clicks={main?.clicks} id={main?.id} /> : null}
 
+			<SubscriberForm />
+
 			{/* Created by */}
 			<h3 className="text-md text-black font-bold dark:text-white select-none transition-all duration-300 ease-out mb-16">
 				Created by{' '}
 				<span className="text-sky-500 dark:text-sky-400">{name}</span>
 			</h3>
-			<Link className='fixed left-10 bottom-10 bg-slate-700 rounded-full p-2 hover:scale-110 shadow-lg' href='/admin' >Admin</Link>
+			<Link className='fixed left-10 bottom-10 bg-slate-200 dark:bg-slate-800 rounded-full p-2 hover:scale-110 shadow-lg' href='/admin' >Admin</Link>
 		</div>
 	);
 }
