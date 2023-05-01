@@ -2,10 +2,18 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 interface FormValues {
 	email: string;
 }
+
+const schema = yup
+	.object({
+		email: yup.string().email().required(),
+	})
+	.required();
 
 export default function SubscriberForm() {
 	const {
@@ -13,13 +21,15 @@ export default function SubscriberForm() {
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<FormValues>();
+	} = useForm<FormValues>({
+		resolver: yupResolver(schema),
+	});
+
 	const onSubmit: SubmitHandler<FormValues> = (data) => alert({ data });
 
-	console.log(watch('email')); // watch input value by passing the name of it
+	console.log(watch('email'));
 
 	return (
-		/* "handleSubmit" will validate your inputs before invoking "onSubmit" */
 
 		<form
 			className="flex w-full max-w-2xl items-center space-x-2"
@@ -32,9 +42,7 @@ export default function SubscriberForm() {
 			/>
 			<Button type="submit">Subscribe</Button>
 
-			{errors.email ? (
-				<span>This field is required and must be a valid email</span>
-			) : null}
+			<div>{errors.email?.message}</div>
 		</form>
 	);
 }
