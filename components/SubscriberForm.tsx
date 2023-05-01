@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Loader2 } from 'lucide-react';
 
 interface FormValues {
 	email: string;
@@ -20,17 +21,14 @@ export default function SubscriberForm() {
 		register,
 		handleSubmit,
 		watch,
-		formState: { errors },
+		formState: { errors, isSubmitting },
 	} = useForm<FormValues>({
 		resolver: yupResolver(schema),
 	});
 
 	const onSubmit: SubmitHandler<FormValues> = (data) => alert({ data });
 
-	console.log(watch('email'));
-
 	return (
-
 		<form
 			className="flex w-full max-w-2xl items-center space-x-2"
 			onSubmit={handleSubmit(onSubmit)}
@@ -40,7 +38,16 @@ export default function SubscriberForm() {
 				placeholder="email"
 				{...register('email', { required: true, pattern: /^\S+@\S+$/i })}
 			/>
-			<Button type="submit">Subscribe</Button>
+			{isSubmitting ? (
+				<Button disabled>
+					<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+					Please wait
+				</Button>
+			) : (
+				<Button type="submit" disabled={isSubmitting}>
+					Subscribe
+				</Button>
+			)}
 
 			<div>{errors.email?.message}</div>
 		</form>
