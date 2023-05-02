@@ -28,28 +28,40 @@ export default function SubscriberForm() {
 
 	const onSubmit: SubmitHandler<FormValues> = (data) => alert({ data });
 
+	function delayedExecution<T extends any[], R>(
+		func: (...args: T) => R
+	): (...args: T) => Promise<R> {
+		return async (...args: T): Promise<R> => {
+			await new Promise((resolve) => setTimeout(resolve, 5000));
+			return func(...args);
+		};
+	}
+
 	return (
 		<form
-			className="flex w-full max-w-2xl items-center space-x-2"
-			onSubmit={handleSubmit(onSubmit)}
+			className="flex flex-col sm:flex-row w-full max-w-2xl items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-16"
+			onSubmit={handleSubmit(delayedExecution(onSubmit))}
 		>
-			<Input
-				type="email"
-				placeholder="email"
-				{...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-			/>
-			{isSubmitting ? (
-				<Button disabled>
-					<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-					Please wait
-				</Button>
-			) : (
-				<Button type="submit" disabled={isSubmitting}>
-					Subscribe
-				</Button>
-			)}
-
-			<div>{errors.email?.message}</div>
+			<div className="flex flex-col w-full">
+				<Input
+					type="email"
+					placeholder="email"
+					{...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+				/>
+				<div>{errors.email?.message}</div>
+			</div>
+			<div className="flex-shrink-0 w-full sm:w-auto">
+				{isSubmitting ? (
+					<Button disabled className="w-full">
+						<Loader2 className="mr-2 h-6 w-6 animate-spin" />
+						Loading...
+					</Button>
+				) : (
+					<Button className="w-full" type="submit" disabled={isSubmitting}>
+						Subscribe
+					</Button>
+				)}
+			</div>
 		</form>
 	);
 }
