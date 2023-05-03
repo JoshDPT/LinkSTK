@@ -39,25 +39,33 @@ export default function SubscriberForm() {
 
 	return (
 		<form
-			className="flex flex-col sm:flex-row w-full max-w-2xl items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-16"
+			className="flex flex-col sm:flex-row w-full max-w-2xl items-end space-y-2 sm:space-y-0 sm:space-x-2 mb-16"
 			onSubmit={handleSubmit(delayedExecution(onSubmit))}
 		>
-			<div className="flex flex-col w-full">
+			<div className="flex flex-col w-full gap-2">
+				<div className="flex flex-row content-between justify-between">
+					<label className='font-bold'>Subscribe</label>
+					<div className='text-red-400 animate-pulse'>{errors.email?.message}</div>
+				</div>
+
 				<Input
 					type="email"
 					placeholder="email"
 					{...register('email', { required: true, pattern: /^\S+@\S+$/i })}
 				/>
-				<div>{errors.email?.message}</div>
 			</div>
-			<div className="flex-shrink-0 w-full sm:w-auto">
+			<div className="flex flex-shrink-0 w-full sm:w-auto">
 				{isSubmitting ? (
-					<Button disabled className="w-full">
+					<Button disabled className="sm:w-40 w-full">
 						<Loader2 className="mr-2 h-6 w-6 animate-spin" />
 						Loading...
 					</Button>
 				) : (
-					<Button className="w-full" type="submit" disabled={isSubmitting}>
+					<Button
+						className="sm:w-40 w-full"
+						type="submit"
+						disabled={isSubmitting}
+					>
 						Subscribe
 					</Button>
 				)}
