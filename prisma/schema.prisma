@@ -27,3 +27,11 @@ model View {
 
   @@unique([id])
 }
+
+model Subscriber {
+  id           Int     @id @default(autoincrement())
+  date         DateTime
+  email        String @unique
+
+  @@unique([id])
+}

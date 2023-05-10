@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Loader2 } from 'lucide-react';
+import addSub from '@/lib/addSub';
 
 interface FormValues {
 	email: string;
@@ -18,21 +19,21 @@ const schema = yup
 
 export default function SubscriberForm() {
 	const {
+		reset,
 		register,
 		handleSubmit,
-		watch,
 		formState: { errors, isSubmitting },
 	} = useForm<FormValues>({
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit: SubmitHandler<FormValues> = (data) => alert({ data });
+	const onSubmit: SubmitHandler<FormValues> = (data) => {addSub(data.email), reset()};
 
 	function delayedExecution<T extends any[], R>(
 		func: (...args: T) => R
 	): (...args: T) => Promise<R> {
 		return async (...args: T): Promise<R> => {
-			await new Promise((resolve) => setTimeout(resolve, 5000));
+			await new Promise((resolve) => setTimeout(resolve, 3000));
 			return func(...args);
 		};
 	}
